@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { SideBar } from "./components/SideBar";
 import { Content } from "./components/Content";
@@ -18,9 +18,9 @@ export function App() {
   const movies = useMoviesByGenre(selectedGenreId);
   const selectedGenre = useGenre(selectedGenreId);
 
-  function handleSelectGenre(id: number) {
+  const handleSelectGenre = useCallback((id: number) => {
     setSelectedGenreId(id);
-  }
+  }, []);
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
